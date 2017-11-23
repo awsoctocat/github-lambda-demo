@@ -7,7 +7,7 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: github-lambda-demo-pix
+      BucketName: github-demo-lambda-pix
 
   ImageBucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -18,14 +18,14 @@ Resources:
             - Action: s3:GetObject
               Effect: Allow
               Principal: "*"
-              Resource: !Sub arn:aws:s3:::github-lambda-demo-pix/*
+              Resource: !Sub arn:aws:s3:::github-demo-lambda-pix/*
 
   ResizedBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: github-lambda-demo-pix-resized
+      BucketName: github-demo-lambda-pix-resized
 
   ResizeBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -36,13 +36,13 @@ Resources:
           - Action: s3:PutObject
             Effect: Allow
             Principal: "*"
-            Resource: !Sub arn:aws:s3:::github-lambda-demo-pix-resized/*
+            Resource: !Sub arn:aws:s3:::github-demo-lambda-pix-resized/*
 
   ResizeFunction:
         Type: AWS::Serverless::Function
         Properties:
-          #CodeUri: ./dist/github-lambda-demo_latest.zip
-          #CodeUri: s3://github-lambda-demo/github-lambda-demo_latest.zip
+          #CodeUri: ./dist/github-demo-lambda_latest.zip
+          #CodeUri: s3://github-demo-lambda/github-lambda-demo_latest.zip
           CodeUri: ./
           Handler: index.handler
           Runtime: nodejs6.10
@@ -71,12 +71,12 @@ Resources:
           - s3
           - ''
           - ''
-          - github-lambda-demo-pix
+          - github-demo-lambda-pix
 
   ImageBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: github-lambda-demo-pix
+      BucketName: github-demo-lambda-pix
       Tags: []
       NotificationConfiguration:
         LambdaConfigurations:

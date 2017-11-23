@@ -49,7 +49,7 @@ Resources:
           MemorySize: 1024
           Timeout: 300
           FunctionName: CreateThumbnail
-          Role: arn:aws:iam::767259522535:role/github_lambda_admin_role
+          Role: arn:aws:iam::767259522535:role/lambda-demo-admin-role
           Environment:
                   Variables:
                     BUCKET: Bucket
